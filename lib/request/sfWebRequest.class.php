@@ -872,7 +872,7 @@ class sfWebRequest extends sfRequest
    */
   static protected function fixPhpFilesArray(array $data)
   {
-    $fileKeys = array('error', 'name', 'size', 'tmp_name', 'type');
+    $fileKeys = array('error', 'full_path', 'name', 'size', 'tmp_name', 'type');
     $keys = array_keys($data);
     sort($keys);
 
@@ -890,6 +890,7 @@ class sfWebRequest extends sfRequest
     {
       $files[$key] = self::fixPhpFilesArray(array(
         'error'    => $data['error'][$key],
+        'full_path' => $data['full_path'][$key],
         'name'     => $data['name'][$key],
         'type'     => $data['type'][$key],
         'tmp_name' => $data['tmp_name'][$key],
